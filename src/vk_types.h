@@ -1,0 +1,58 @@
+﻿// vulkan_guide.h : Include file for standard system include files,
+// or project specific include files.
+#pragma once
+#include <stdint.h>
+#define local_persist static 
+#define global_variable static
+//#define INTERNAL static
+typedef uint8_t uint8;
+typedef uint16_t uint16;
+typedef uint32_t uint32;
+typedef uint64_t uint64;
+typedef float real32;
+typedef double real64;
+#define PI 3.14159265359f
+typedef int8_t int8;
+typedef int16_t int16;
+typedef int32_t int32;
+typedef int64_t int64;
+//used when the true value doesnt really matter and it can be anything as long as it is non-zero
+typedef int32 bool32;
+
+#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
+#include <span>
+#include <array>
+#include <functional>
+#include <deque>
+
+#include <vulkan/vulkan.h>
+#include <vulkan/vk_enum_string_helper.h>
+#include <vk_mem_alloc.h>
+
+#include <fmt/core.h>
+
+#include <glm/mat4x4.hpp>
+#include <glm/vec4.hpp>
+
+
+#define VK_CHECK(x)                                                     \
+    do {                                                                \
+        VkResult err = x;                                               \
+        if (err) {                                                      \
+            fmt::println("Detected Vulkan error: {}", string_VkResult(err)); \
+            abort();                                                    \
+        }                                                               \
+    } while (0)
+
+
+struct AllocatedImage
+{
+    VkImage image;
+    VkImageView imageView;
+    VmaAllocation allocation;
+    VkExtent3D imageExtent;
+    VkFormat imageFormat;
+};
