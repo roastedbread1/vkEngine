@@ -10,7 +10,7 @@
 #define VMA_IMPLEMENTATION
 #include "vk_mem_alloc.h"
 
-///TODO : https://vkguide.dev/docs/new_chapter_2/vulkan_shader_code/
+
 namespace ENGINE {
 	/*VulkanEngine* loadedEngine = nullptr;*/
 	vkEngine* loadedEngine = nullptr;
